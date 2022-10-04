@@ -3,20 +3,38 @@ import PropTypes from 'prop-types';
 import NewBrewMethodStepForm from './NewBrewMethodStepForm';
 
 function BrewMethodDetail(props) {
-  const { brewMethod } = props;
+  const { brewMethod, onAddNewStep } = props;
   const [newStepFormVisible, setNewStepFormVisible] = useState(false);
+  const stepStyle = {
+    border: 'solid 1px black',
+    width: '300px',
+  };
 
   const handleShowAddNewStep = () => {
     setNewStepFormVisible(!newStepFormVisible);
   };
 
+  const handleAddNewStep = (stepInfo) => {
+    onAddNewStep(stepInfo);
+    setNewStepFormVisible(!newStepFormVisible);
+  };
+
   let stepForm = null;
   let buttonText = null;
+  let steps = brewMethod.steps.map((step) => (
+    <div className='text-center mx-auto' style={stepStyle} key={step.stepId}>
+      <p>{step.stepName}</p>
+      <p>{step.stepInfo}</p>
+    </div>
+  ));
 
   if (newStepFormVisible) {
     stepForm = (
       <div id='steps'>
-        <NewBrewMethodStepForm />
+        <NewBrewMethodStepForm
+          onAddNewStep={handleAddNewStep}
+          id={brewMethod.id}
+        />
       </div>
     );
     buttonText = 'Cancel';
@@ -24,6 +42,7 @@ function BrewMethodDetail(props) {
     stepForm = null;
     buttonText = 'Add New Step';
   }
+
   return (
     <React.Fragment>
       <div className='text-center'>
@@ -32,6 +51,7 @@ function BrewMethodDetail(props) {
           {brewMethod.type} - {brewMethod.method}
         </h3>
       </div>
+      {steps}
       {stepForm}
       <div className='text-center m-1'>
         <button
@@ -47,6 +67,7 @@ function BrewMethodDetail(props) {
 
 BrewMethodDetail.propTypes = {
   brewMethod: PropTypes.object,
+  onAddNewStep: PropTypes.func,
 };
 
 export default BrewMethodDetail;

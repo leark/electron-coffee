@@ -15,6 +15,7 @@ function BrewMethod(props) {
         <p>
           {props.type} - {props.method}
         </p>
+        <p>{props.steps.length} step process</p>
       </div>
     </React.Fragment>
   );

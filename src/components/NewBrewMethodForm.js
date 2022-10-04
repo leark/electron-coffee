@@ -18,8 +18,8 @@ function NewBrewMethodForm(props) {
       <div className='mt-8 text-gray-900 px-6'>
         <form className='mx-auto md:max-w-2xl' onSubmit={handleFormSubmit}>
           <label className='block'>
-            <span className='text-gray-700'>Name</span>
-            <input        
+            <span className='text-gray-700'>name</span>
+            <input
               type='text'
               name='name'
               className='
@@ -27,7 +27,7 @@ function NewBrewMethodForm(props) {
             />
           </label>
           <label className='block'>
-            <span className='text-gray-700'>Type</span>
+            <span className='text-gray-700'>type</span>
             <input
               type='text'
               name='type'
@@ -36,7 +36,7 @@ function NewBrewMethodForm(props) {
             />
           </label>
           <label className='block'>
-            <span className='text-gray-700'>Method</span>
+            <span className='text-gray-700'>method</span>
             <input
               type='text'
               name='method'
@@ -49,7 +49,7 @@ function NewBrewMethodForm(props) {
               className='rounded-full bg-slate-400 px-4 py-1.5'
               type='submit'
             >
-              Create New Method
+              create new method
             </button>
           </div>
         </form>

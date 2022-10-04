@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BrewMethod from './BrewMethod';
 
-function SplashPage(props) {
+function StartPage(props) {
   const sectionStyles = {
     border: 'solid 1px black',
     width: '500px',
     height: '300px',
   };
 
-  const sectionClassName = 'splash-section mx-auto container';
+  const sectionClassName = 'start-section mx-auto container';
 
   return (
     <React.Fragment>
@@ -20,11 +20,11 @@ function SplashPage(props) {
           style={sectionStyles}
           onClick={props.onClickNewBrewMethod}
         >
-          <h3 className='text-2xl font-bold underline'>Create New Method</h3>
+          <h3 className='text-2xl font-bold underline'>create new method</h3>
         </div>
         <div className={sectionClassName} style={sectionStyles}>
           <h3 className='text-2xl font-bold underline'>
-            Saved Brewing Methods
+            saved brewing methods
           </h3>
           {props.brewMethodList.map((brewMethod) => (
             <BrewMethod
@@ -34,6 +34,7 @@ function SplashPage(props) {
               name={brewMethod.name}
               type={brewMethod.type}
               method={brewMethod.method}
+              steps={brewMethod.steps}
             />
           ))}
         </div>
@@ -42,10 +43,10 @@ function SplashPage(props) {
   );
 }
 
-SplashPage.propTypes = {
+StartPage.propTypes = {
   brewMethodList: PropTypes.array,
   onBrewMethodSelection: PropTypes.func,
   onClickNewBrewMethod: PropTypes.func,
 };
 
-export default SplashPage;
+export default StartPage;
