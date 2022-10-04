@@ -6,12 +6,12 @@ function BrewMethodDetail(props) {
   const { brewMethod } = props;
   const [newStepFormVisible, setNewStepFormVisible] = useState(false);
 
-  const handleAddNewStep = () => {
+  const handleShowAddNewStep = () => {
     setNewStepFormVisible(!newStepFormVisible);
   };
 
-  const stepForm = null;
-  const buttonText = null;
+  let stepForm = null;
+  let buttonText = null;
 
   if (newStepFormVisible) {
     stepForm = (
@@ -36,7 +36,7 @@ function BrewMethodDetail(props) {
       <div className='text-center m-1'>
         <button
           className='rounded-full bg-slate-400 px-4 py-1.5'
-          onClick={handleAddNewStep}
+          onClick={handleShowAddNewStep}
         >
           {buttonText}
         </button>
