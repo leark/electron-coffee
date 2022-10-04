@@ -9,28 +9,34 @@ function SplashPage(props) {
     height: '300px',
   };
 
+  const sectionClassName = 'splash-section mx-auto container';
+
   return (
     <React.Fragment>
-      <div
-        id='new-brew-method'
-        className='splash-section'
-        style={sectionStyles}
-      >
-        <h3 className='text-2xl font-bold underline'>Create new method here</h3>
-      </div>
-      <div className='splash-section' style={sectionStyles}>
-        <h3 className='text-2xl font-bold underline'>
-          Show all the saved methods here
-        </h3>
-        {props.brewMethodList.map((brewMethod) => (
-          <BrewMethod
-            whenBrewMethodClicked={props.onBrewMethodSelection}
-            id={brewMethod.id}
-            name={brewMethod.name}
-            type={brewMethod.type}
-            method={brewMethod.method}
-          />
-        ))}
+      <div className='container columns-2'>
+        <div
+          id='new-brew-method'
+          className={sectionClassName}
+          style={sectionStyles}
+          onClick={props.onClickNewBrewMethod}
+        >
+          <h3 className='text-2xl font-bold underline'>Create New Method</h3>
+        </div>
+        <div className={sectionClassName} style={sectionStyles}>
+          <h3 className='text-2xl font-bold underline'>
+            Saved Brewing Methods
+          </h3>
+          {props.brewMethodList.map((brewMethod) => (
+            <BrewMethod
+              whenBrewMethodClicked={props.onBrewMethodSelection}
+              id={brewMethod.id}
+              key={brewMethod.id}
+              name={brewMethod.name}
+              type={brewMethod.type}
+              method={brewMethod.method}
+            />
+          ))}
+        </div>
       </div>
     </React.Fragment>
   );
@@ -39,6 +45,7 @@ function SplashPage(props) {
 SplashPage.propTypes = {
   brewMethodList: PropTypes.array,
   onBrewMethodSelection: PropTypes.func,
+  onClickNewBrewMethod: PropTypes.func,
 };
 
 export default SplashPage;
