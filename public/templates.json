@@ -1,0 +1,39 @@
+{
+  "presets": [
+    {
+      "id": "1",
+      "author": "Alan Adler",
+      "videoURL": "https://youtu.be/9c14DxfVOY4",
+      "title": "Brewing with Inventor Alan Adler (Single Cup)",
+      "type": "pressure",
+      "method": "aeropress",
+      "steps": [
+        {
+          "stepName": "grind coffee",
+          "stepInfo": "15g of nearly espresso fine",
+          "stepId": "1"
+        },
+        {
+          "stepName": "heat water",
+          "stepInfo": "approx 100ml of 80c",
+          "stepId": "2"
+        },
+        {
+          "stepName": "fill chamber with water",
+          "stepInfo": "1.5 level on the chamber, which is approx 100ml",
+          "stepId": "3"
+        },
+        {
+          "stepName": "stir",
+          "stepInfo": "10 seconds",
+          "stepId": "4"
+        },
+        {
+          "stepName": "put plunger in",
+          "stepInfo": "lightly press with only the weight of your arm* (very important)",
+          "stepId": "5"
+        }
+      ]
+    }
+  ]
+}

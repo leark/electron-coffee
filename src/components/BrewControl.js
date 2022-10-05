@@ -1,44 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import BrewMethod from './BrewMethod';
 import BrewMethodDetail from './BrewMethodDetail';
 import NewBrewMethodForm from './NewBrewMethodForm';
 import SplashPage from './StartPage';
+import sleep from './sleep';
 import { v4 } from 'uuid';
 
 function BrewControl() {
   // add date that gets updated with edit or last accessed
   // or have both
-  const [brewMethodList, setBrewMethodList] = useState([
-    {
-      id: '1',
-      name: 'my first brew method',
-      type: 'drip',
-      method: 'chemex',
-      steps: [],
-    },
-    {
-      id: '2',
-      name: 'I like espresso shots',
-      type: 'pressure',
-      method: 'espresso',
-      steps: [
-        {
-          stepName: 'Grind beans',
-          stepInfo: '15g',
-          stepId: '1',
-        },
-      ],
-    },
-  ]);
+  // const [brewMethodList, setBrewMethodList] = useState([
+  //   {
+  //     id: '1',
+  //     name: 'my first brew method',
+  //     type: 'drip',
+  //     method: 'chemex',
+  //     steps: [],
+  //   },
+  //   {
+  //     id: '2',
+  //     name: 'I like espresso shots',
+  //     type: 'pressure',
+  //     method: 'espresso',
+  //     steps: [
+  //       {
+  //         stepName: 'Grind beans',
+  //         stepInfo: '15g',
+  //         stepId: '1',
+  //       },
+  //     ],
+  //   },
+  // ]);
+  const [brewMethodList, setBrewMethodList] = useState(null);
   const [selectedBrewMethod, setSelectedBrewMethod] = useState(null);
   const [formVisibleOnPage, setFormVisibleOnPage] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadFromFile();
-  }, []);
-
-  const loadFromFile = () => {
-    fetch('test.json', {
+  const loadFromFile = async (fileName) => {
+    await fetch(fileName, {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -49,11 +48,33 @@ function BrewControl() {
         return response.json();
       })
       .then((jsonObj) => {
-        console.log(jsonObj);
+        // console.log(jsonObj);
+        return jsonObj;
       });
   };
 
-  const saveToFile = () => {
+  const loadSaved = useCallback(async () => {
+    const response = await fetch('test.json', {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    });
+    const json = await response.json();
+    await sleep(1000);
+    setBrewMethodList(json.saved);
+    setLoading(false);
+    // const saved = await loadFromFile('test.json');
+    // console.log(saved);
+    // setBrewMethodList(saved);
+    // setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    loadSaved().catch(console.error);
+  }, [loadSaved]);
+
+  const saveToLocalStorage = () => {
     const jsonString = JSON.stringify({
       saved: brewMethodList,
     });
@@ -116,34 +137,43 @@ function BrewControl() {
       back to start
     </button>
   );
-
-  if (selectedBrewMethod) {
-    currScreen = (
-      <BrewMethodDetail
-        brewMethod={selectedBrewMethod}
-        onAddNewStep={handleAddNewStep}
-      />
-    );
-    button = backToSplashButton;
-  } else if (formVisibleOnPage) {
-    currScreen = (
-      <NewBrewMethodForm onAddNewBrewMethod={handleAddNewBrewMethod} />
-    );
-    button = backToSplashButton;
+  if (!loading) {
+    if (selectedBrewMethod) {
+      currScreen = (
+        <BrewMethodDetail
+          brewMethod={selectedBrewMethod}
+          onAddNewStep={handleAddNewStep}
+        />
+      );
+      button = backToSplashButton;
+    } else if (formVisibleOnPage) {
+      currScreen = (
+        <NewBrewMethodForm onAddNewBrewMethod={handleAddNewBrewMethod} />
+      );
+      button = backToSplashButton;
+    } else {
+      currScreen = (
+        <SplashPage
+          brewMethodList={brewMethodList}
+          onBrewMethodSelection={handleLoadingBrewMethod}
+          onClickNewBrewMethod={handleClick}
+        />
+      );
+      button = null;
+    }
   } else {
-    currScreen = (
-      <SplashPage
-        brewMethodList={brewMethodList}
-        onBrewMethodSelection={handleLoadingBrewMethod}
-        onClickNewBrewMethod={handleClick}
-      />
-    );
-    button = null;
+    currScreen = <div>Loading</div>;
   }
+
+  const brewControlStyle = {
+    backgroundColor: '#E4CEAF',
+    backgroundImage: 'url(/recycledpaper3.png)',
+    color: '#330E01',
+  };
 
   return (
     <React.Fragment>
-      <div className='container'>
+      <div style={brewControlStyle} className='h-full flex-1'>
         {currScreen}
         <div className='text-center'>{button}</div>
       </div>
