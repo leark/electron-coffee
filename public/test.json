@@ -1,0 +1,31 @@
+{
+  "saved":
+  [
+    {
+      "id": "1",
+      "name": "my first brew method",
+      "type": "drip",
+      "method": "chemex",
+      "steps": [
+        {
+          "stepName": "Start boiling water",
+          "stepInfo": "200ml",
+          "stepId": "1"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "I like espresso shots",
+      "type": "pressure",
+      "method": "espresso",
+      "steps": [
+        {
+          "stepName": "Grind beans",
+          "stepInfo": "15g",
+          "stepId": "1"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "types":
+  [
+    "boiling",
+    "steeping",
+    "dripping",
+    "pressure",
+    "other"
+  ],
+  "methods":
+  [
+    {
+      "name": "cowboy",
+      "type": "boiling"
+    },
+    {
+      "name": "turkish",
+      "type": "boiling"
+    },
+    {
+      "name": "french press",
+      "type": "steeping"
+    },
+    {
+      "name": "cold brew",
+      "type": "steeping"
+    },
+    {
+      "name": "coffee bag",
+      "type": "steeping"
+    },
+    {
+      "name": "instant",
+      "type": "steeping"
+    },
+    {
+      "name": "siphon brewer",
+      "type": "steeping"
+    },
+    {
+      "name": "percolator",
+      "type": "dripping"
+    },
+    {
+      "name": "pour-over",
+      "type": "dripping"
+    },
+    {
+      "name": "chemex",
+      "type": "dripping"
+    },
+    {
+      "name": "clever dripper",
+      "type": "dripping"
+    },
+    {
+      "name": "auto-drip machine",
+      "type": "dripping"
+    },
+    {
+      "name": "espresso",
+      "type": "pressure"
+    },
+    {
+      "name": "moka pot",
+      "type": "pressure"
+    },
+    {
+      "name": "aeropress",
+      "type": "pressure"
+    },
+    {
+      "name": "pod machine",
+      "type": "pressure"
+    },
+    {
+      "name": "vietnamese phin",
+      "type": "other"
+    },
+    {
+      "name": "nitrous",
+      "type": "other"
+    },
+    {
+      "name": "puerto rican cafe",
+      "type": "other"
+    }
+  ]
+}

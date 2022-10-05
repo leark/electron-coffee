@@ -37,7 +37,7 @@ function BrewMethodDetail(props) {
         />
       </div>
     );
-    buttonText = 'Cancel';
+    buttonText = 'cancel';
   } else {
     stepForm = null;
     buttonText = 'Add New Step';

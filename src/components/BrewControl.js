@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BrewMethod from './BrewMethod';
 import BrewMethodDetail from './BrewMethodDetail';
 import NewBrewMethodForm from './NewBrewMethodForm';
@@ -33,6 +33,43 @@ function BrewControl() {
   const [selectedBrewMethod, setSelectedBrewMethod] = useState(null);
   const [formVisibleOnPage, setFormVisibleOnPage] = useState(false);
 
+  useEffect(() => {
+    loadFromFile();
+  }, []);
+
+  const loadFromFile = () => {
+    fetch('test.json', {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+      .then((response) => {
+        // console.log(response);
+        return response.json();
+      })
+      .then((jsonObj) => {
+        console.log(jsonObj);
+      });
+  };
+
+  const saveToFile = () => {
+    const jsonString = JSON.stringify({
+      saved: brewMethodList,
+    });
+    localStorage.setItem();
+  };
+  /*
+    TextFile = () => {
+        const element = document.createElement("a");
+        const textFile = new Blob([[JSON.stringify('pass data from localStorage')], {type: 'text/plain'}); //pass data from localStorage API to blob
+        element.href = URL.createObjectURL(textFile);
+        element.download = "userFile.txt";
+        document.body.appendChild(element); 
+        element.click();
+      }
+  */
+
   const handleLoadingBrewMethod = (id) => {
     const selected = brewMethodList.filter((method) => method.id === id)[0];
     setSelectedBrewMethod(selected);
@@ -66,6 +103,7 @@ function BrewControl() {
       .concat(newMethod);
     setBrewMethodList(newMethodList);
     setSelectedBrewMethod(newMethod);
+    // saveToFile();
   };
 
   let currScreen = null;
