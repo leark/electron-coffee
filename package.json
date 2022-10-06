@@ -13,10 +13,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "env BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "concurrently -k \"npm start\" \"npm:electron\"",
+    "electron": "wait-on tcp:3000 && electron ."
   },
   "eslintConfig": {
     "extends": [
@@ -39,7 +41,13 @@
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",
     "autoprefixer": "^10.4.12",
+    "concurrently": "^7.4.0",
+    "electron": "^21.1.0",
+    "electron-packager": "^16.0.0",
     "postcss": "^8.4.17",
-    "tailwindcss": "^3.1.8"
-  }
+    "tailwindcss": "^3.1.8",
+    "wait-on": "^6.0.1"
+  },
+  "main": "src/electron-starter.js",
+  "homepage": "./"
 }
