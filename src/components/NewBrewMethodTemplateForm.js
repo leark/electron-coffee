@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
 
-function NewBrewMethodForm(props) {
+function NewBrewMethodTemplateForm(props) {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     props.onAddNewBrewMethod({
@@ -61,8 +61,8 @@ function NewBrewMethodForm(props) {
   );
 }
 
-NewBrewMethodForm.propTypes = {
+NewBrewMethodTemplateForm.propTypes = {
   onAddNewBrewMethod: PropTypes.func,
 };
 
-export default NewBrewMethodForm;
+export default NewBrewMethodTemplateForm;

@@ -8,9 +8,7 @@ function Sidebar() {
 
   return (
     <React.Fragment>
-      <div style={sidebarStyle} className='flex-none basis-1'>
-        This is where sidebar is
-      </div>
+      <div style={sidebarStyle} className='flex basis-8'></div>
     </React.Fragment>
   );
 }

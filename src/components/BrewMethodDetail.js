@@ -55,7 +55,7 @@ function BrewMethodDetail(props) {
       {stepForm}
       <div className='text-center m-1'>
         <button
-          className='rounded-full bg-slate-400 px-4 py-1.5'
+          className='rounded-full bg-darkbrown text-beige px-4 py-1.5'
           onClick={handleShowAddNewStep}
         >
           {buttonText}

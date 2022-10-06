@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import BrewMethod from './BrewMethod';
 import BrewMethodDetail from './BrewMethodDetail';
 import NewBrewMethodForm from './NewBrewMethodForm';
-import SplashPage from './StartPage';
+import StartPage from './StartPage';
 import sleep from './sleep';
 import { v4 } from 'uuid';
 
@@ -34,6 +34,8 @@ function BrewControl() {
   const [brewMethodList, setBrewMethodList] = useState(null);
   const [selectedBrewMethod, setSelectedBrewMethod] = useState(null);
   const [formVisibleOnPage, setFormVisibleOnPage] = useState(false);
+  const [templateFormVisibleOnPage, setTemplateFormVisibleOnPage] =
+    useState(false);
   const [loading, setLoading] = useState(true);
 
   const loadFromFile = async (fileName) => {
@@ -104,6 +106,14 @@ function BrewControl() {
     }
   };
 
+  const handleClickTemplate = () => {
+    if (selectedBrewMethod) {
+      setSelectedBrewMethod(null);
+    } else {
+      setTemplateFormVisibleOnPage(!formVisibleOnPage);
+    }
+  };
+
   const handleAddNewBrewMethod = (newBrewMethod) => {
     const newBrewMethodList = brewMethodList.concat(newBrewMethod);
     setBrewMethodList(newBrewMethodList);
@@ -131,7 +141,7 @@ function BrewControl() {
   let button = null;
   const backToSplashButton = (
     <button
-      className='rounded-full bg-slate-400 px-4 py-1.5'
+      className='rounded-full bg-darkbrown text-beige px-4 py-1.5'
       onClick={handleClick}
     >
       back to start
@@ -151,12 +161,17 @@ function BrewControl() {
         <NewBrewMethodForm onAddNewBrewMethod={handleAddNewBrewMethod} />
       );
       button = backToSplashButton;
+    } else if (templateFormVisibleOnPage) {
+      currScreen = (
+        <NewBrewMethodForm />
+      );
     } else {
       currScreen = (
-        <SplashPage
+        <StartPage
           brewMethodList={brewMethodList}
           onBrewMethodSelection={handleLoadingBrewMethod}
           onClickNewBrewMethod={handleClick}
+          onClickNewBrewMethodFromTemplate={handleClickTemplate}
         />
       );
       button = null;
