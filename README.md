@@ -4,7 +4,7 @@
 
 #### _A coffee workflow app_
 
-## Technologies That Will Be Used
+## Technologies
 
 * _HTML_
 * _JavaScript_
