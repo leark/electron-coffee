@@ -35,7 +35,7 @@ _Requires console application such as Git Bash, Terminal, or PowerShell_
 
 5. Run the following command in the console
 
-    ``npm start run``
+    ``npm run dev``
 
 ## Known Bugs
 
