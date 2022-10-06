@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import BrewMethod from './BrewMethod';
 import BrewMethodDetail from './BrewMethodDetail';
 import NewBrewMethodForm from './NewBrewMethodForm';
+import NewBrewMethodTemplateForm from './NewBrewMethodTemplateForm';
 import StartPage from './StartPage';
 import sleep from './sleep';
 import { v4 } from 'uuid';
+import { Transition } from '@headlessui/react';
 
 function BrewControl() {
   // add date that gets updated with edit or last accessed
@@ -110,7 +111,7 @@ function BrewControl() {
     if (selectedBrewMethod) {
       setSelectedBrewMethod(null);
     } else {
-      setTemplateFormVisibleOnPage(!formVisibleOnPage);
+      setTemplateFormVisibleOnPage(!templateFormVisibleOnPage);
     }
   };
 
@@ -163,7 +164,17 @@ function BrewControl() {
       button = backToSplashButton;
     } else if (templateFormVisibleOnPage) {
       currScreen = (
-        <NewBrewMethodForm />
+        <NewBrewMethodTemplateForm
+          onAddNewBrewMethod={handleAddNewBrewMethod}
+        />
+      );
+      button = (
+        <button
+          className='rounded-full bg-darkbrown text-beige px-4 py-1.5'
+          onClick={handleClickTemplate}
+        >
+          back to start
+        </button>
       );
     } else {
       currScreen = (

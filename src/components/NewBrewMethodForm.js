@@ -9,6 +9,7 @@ function NewBrewMethodForm(props) {
       name: event.target.name.value,
       type: event.target.type.value,
       method: event.target.method.value,
+      steps: [],
       id: v4(),
     });
   };

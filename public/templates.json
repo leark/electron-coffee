@@ -34,6 +34,51 @@
           "stepId": "5"
         }
       ]
+    },
+    {
+      "id": "2",
+      "author": "James Hoffman",
+      "videoURL": "https://www.youtube.com/watch?v=st571DYYTR8",
+      "title": "The Ultimate French Press Technique",
+      "type": "steeping",
+      "method": "french press",
+      "steps": [
+        {
+          "stepName": "grind coffee",
+          "stepInfo": "30g of medium coarse",
+          "stepId": "1"
+        },
+        {
+          "stepName": "heat water",
+          "stepInfo": "approx 500ml of boiling water",
+          "stepId": "2"
+        },
+        {
+          "stepName": "pour water",
+          "stepInfo": "let it sit for 4 minutes",
+          "stepId": "3"
+        },
+        {
+          "stepName": "stir",
+          "stepInfo": "stir the crust and throw away floating bits",
+          "stepId": "4"
+        },
+        {
+          "stepName": "wait",
+          "stepInfo": "wait for 5 to 8 minutes",
+          "stepId": "5"
+        },
+        {
+          "stepName": "push plunger in",
+          "stepInfo": "only up to the surface of the coffee",
+          "stepId": "6"
+        },
+        {
+          "stepName": "pour coffee",
+          "stepInfo": "gently",
+          "stepId": "7"
+        }
+      ]
     }
   ]
 }

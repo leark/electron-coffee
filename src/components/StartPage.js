@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BrewMethod from './BrewMethod';
+import { Transition } from '@headlessui/react';
 
 function StartPage(props) {
   const sectionStyles = {
     width: '300px',
-    height: '400px',
   };
   const brewMethodCSS = {
     border: 'solid 3px black',
@@ -17,12 +17,11 @@ function StartPage(props) {
 
   return (
     <React.Fragment>
-      <div className='flex flex-row m-5 justify-center h-full'>
+      <div className='flex flex-row m-5 justify-center h-4/6'>
         <div
           id='new-brew-method'
           className={sectionClassName}
           style={sectionStyles}
-          onClick={props.onClickNewBrewMethod}
         >
           <h3 className='text-2xl font-bold underline'>start</h3>
           <div
@@ -43,9 +42,7 @@ function StartPage(props) {
           </div>
         </div>
         <div className={sectionClassName} style={sectionStyles}>
-          <h3 className='text-2xl font-bold underline'>
-            saved brewing methods
-          </h3>
+          <h3 className='text-2xl font-bold underline'>saved</h3>
           {props.brewMethodList.map((brewMethod) => (
             <BrewMethod
               whenBrewMethodClicked={props.onBrewMethodSelection}

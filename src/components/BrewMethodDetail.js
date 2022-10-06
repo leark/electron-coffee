@@ -6,7 +6,7 @@ function BrewMethodDetail(props) {
   const { brewMethod, onAddNewStep } = props;
   const [newStepFormVisible, setNewStepFormVisible] = useState(false);
   const stepStyle = {
-    border: 'solid 1px black',
+    // border: 'solid 1px black',
     width: '300px',
   };
 
@@ -22,7 +22,11 @@ function BrewMethodDetail(props) {
   let stepForm = null;
   let buttonText = null;
   let steps = brewMethod.steps.map((step) => (
-    <div className='text-center mx-auto' style={stepStyle} key={step.stepId}>
+    <div
+      className='text-center mx-auto rounded-lg border-orangerust border-2 bg-beige'
+      style={stepStyle}
+      key={step.stepId}
+    >
       <p>{step.stepName}</p>
       <p>{step.stepInfo}</p>
     </div>
@@ -40,7 +44,7 @@ function BrewMethodDetail(props) {
     buttonText = 'cancel';
   } else {
     stepForm = null;
-    buttonText = 'Add New Step';
+    buttonText = 'add new step';
   }
 
   return (
